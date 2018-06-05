@@ -3,15 +3,19 @@ READ ME
 ----------------------------
 Amani Garvin
 amg2331@columbia.edu
-amani3g@github
+amani3g@github.com
 -----------------------------
 
 Structure:
 
+This code is all based on the C script in gaps_geom.C (which follows closely the examples in KDetSim.org). However the rest of the code is in C++ and is structured to create and track data from multiple detectors created using it.
 
-main.cc -> runs all functions, include header files here
+Main:
+-------
+main.cc - Runs all functions, include header files here
+	- There is a problem with running MIP's and plotting fields using the modules written below so there is an example of running and plotting an MIP in main right now.
 
-header files:
+Header Files:
 -------------------------
 gaps_detector.h - this defines the gaps class, and its member functions
 	-  Gaps Class Constructor takes 4 parameters
@@ -41,7 +45,7 @@ plot_fields.h - this contains functions related to plotting static fields in the
 
 
 -------------------------------------
-Note on Using KDetSim:
+Notes on Using KDetSim:
 --------------------------------------
 - Using KDetSim1.1: kdetsim.org for more information
 - all length units are in nanometers (dimX, dimY, etc)
@@ -68,4 +72,4 @@ Things I'm Working On Right Now
 _______________________________________
 1. Fixing Plotting in run_mip.h and plot_fields.h
 2. Making Functions in run_mip.h
-3. Uploading all of this to GitHub!
+3. Uploading all of this to GitHub! (Done!)
