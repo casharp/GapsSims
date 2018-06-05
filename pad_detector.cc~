@@ -1,0 +1,32 @@
+
+
+class Capacitor
+  {
+    //Access specifier
+    public:
+    
+    //Data members
+    string capacitor_name;
+    
+    
+    //Member Functions
+    void print_name()
+    {
+      cout << "Cpacitor's name is:" << capacitor_name;
+    }
+    
+  };
+
+int main()
+  {
+    //declare an object of class capacitor
+    Capacitor cap_1;
+
+    //accessing data member
+    cap_1.capacitor_name = "Simple Capacitor";
+
+    cap_1.print_name();
+
+    return 0;
+  }
+  
