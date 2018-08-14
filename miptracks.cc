@@ -5,7 +5,7 @@ int main()
 {
     string directory = "~/Documents/GapsSims/MIPtracks/";
     
-    //array of charge collected on each strip
+    //create an array of charge collected on each strip
     int size = 8;
     double values[size];
     ofstream myfile;
@@ -47,9 +47,13 @@ int main()
         values[i]=det1.sum->GetSum();
         cout << i << values[i];
         
-        myfile << std::setw(1) << (i + 1) << "  " << values[i] << '\n';
+        myfile << std::setw(5) << eventX[j] << " " << std::setw(4) << eventY[k] << "   " << std::setw(1) << (i + 1) << "  " << values[i];
+        
+        sumval[j]=(0-(values[0]+values[1]+values[2]+values[3]+values[4]+values[5]+values[6]+values[7]));
         
     } //close electrode loop
+    
+    myfile << "   " << sumval[j] << '\n';
     
     //plotting histogram with the array
     TCanvas Mipplot;
