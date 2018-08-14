@@ -5,9 +5,10 @@ int main()
 {
     string directory = "~/Documents/GapsSims/MIPtracks/";
     
-    //create an array of charge collected on each strip
+    //array of charge collected on each strip
     int size = 8;
     double values[size];
+    double sumval[size];
     ofstream myfile;
     myfile.open ("mip_charge.txt", std::fstream::in | std::fstream::out | std::fstream::app);
     
@@ -16,7 +17,7 @@ int main()
     {
         
         Gaps_Detector det1(8, -250, .02, i);
-        det1.set_Square_Grooves();
+        det1.set_Round_Grooves();
         
         int n_buckets = 100;
         
@@ -28,15 +29,15 @@ int main()
         det1.SetDriftHisto(1000e-9);
         det1.SetPrecision(1e-10);
         
-        det1.SetEntryPoint(6000,2250, 0.5);
-        det1.SetExitPoint(40000,0, 0.5);
+        det1.SetEntryPoint(6000,1125, 0.5);
+        det1.SetExitPoint(25000,1125, 0.5);
         
         TCanvas Mipplot;
         gStyle->SetOptStat(0);
         
         det1.ShowMipIR(n_buckets);
         
-        string dsname = directory + "event.ps";
+        string dsname = directory + "event2.ps";
         Mipplot.SaveAs(dsname.c_str());
         
         
@@ -47,13 +48,13 @@ int main()
         values[i]=det1.sum->GetSum();
         cout << i << values[i];
         
-        myfile << std::setw(5) << eventX[j] << " " << std::setw(4) << eventY[k] << "   " << std::setw(1) << (i + 1) << "  " << values[i];
+        myfile << std::setw(1) << (i + 1) << "  " << values[i];
         
-        sumval[j]=(0-(values[0]+values[1]+values[2]+values[3]+values[4]+values[5]+values[6]+values[7]));
+        sumval[0]=(0-(values[0]+values[1]+values[2]+values[3]+values[4]+values[5]+values[6]+values[7]));
         
     } //close electrode loop
     
-    myfile << "   " << sumval[j] << '\n';
+    myfile << "   " << sumval[0] << '\n';
     
     //plotting histogram with the array
     TCanvas Mipplot;
@@ -96,7 +97,7 @@ int main()
     Mipplot.Modified();
     
     
-    string psname = directory + "collection.ps";
+    string psname = directory + "collection2.ps";
     Mipplot.SaveAs(psname.c_str());
     
     myfile.close();
