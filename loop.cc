@@ -1,6 +1,6 @@
 #include "gaps_detector.h"
 
-int main()
+int loop()
 {
     string directory = "~/Documents/GapsSims/LoopOutput/";
     
@@ -27,7 +27,7 @@ int main()
   
     {
     Gaps_Detector det1(8, -250, .02, i);
-    det1.set_Square_Grooves();
+    det1.set_Round_Grooves();
     
     int n_buckets = 100;
     
@@ -131,6 +131,6 @@ int main()
     } //close y loop
 
 myfile.close();
-
+return 0;
     
 };
