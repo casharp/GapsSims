@@ -1,4 +1,6 @@
 #include "gaps_detector.h"
+#include <math.h>
+#include <vector>
 
 
 int main()
@@ -29,8 +31,25 @@ int main()
         det1.SetDriftHisto(1000e-9);
         det1.SetPrecision(1e-10);
         
-        det1.SetEntryPoint(6000,1125, 0.5);
-        det1.SetExitPoint(25000,1125, 0.5);
+        
+        std::vector<int> Exits; //create integer vector of exit values to be filled in following for loop
+        
+        for(int a = 0; a <= 25000; a += 5000)
+        {
+            for(int theta = 0; theta < 90; theta += 5)
+            {
+                float b = 2500 * (tan(theta*M_PI/180)) + a;
+                Exits.push_back(b);
+            }
+            
+            int VectorSize = static_cast<int>(Exits.size());
+            
+            for(int c = 0; c < VectorSize; c++)
+            {
+                    det1.SetEntryPoint(a,2500, 0.5);
+                    det1.SetExitPoint(Exits[c],0, 0.5);
+            }   
+        }
         
         TCanvas Mipplot;
         gStyle->SetOptStat(0);
