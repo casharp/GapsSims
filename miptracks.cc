@@ -3,7 +3,7 @@
 #include <vector>
 
 
-int main()
+int miptracks()
 {
     string directory = "~/Documents/GapsSims/MIPtracks/";
     
@@ -120,4 +120,5 @@ int main()
     Mipplot.SaveAs(psname.c_str());
     
     myfile.close();
+    return 0;
 };
