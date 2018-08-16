@@ -48,28 +48,30 @@ int miptracks()
             {
                     det1.SetEntryPoint(a,2500, 0.5);
                     det1.SetExitPoint(Exits[c],0, 0.5);
+                
+                
+                
+                    TCanvas Mipplot;
+                    gStyle->SetOptStat(0);
+        
+                    det1.ShowMipIR(n_buckets);
+        
+                    string dsname = directory + "event2.ps";
+                    Mipplot.SaveAs(dsname.c_str());
+        
+        
+        
+                    //Fill the array with values from MipIR
+                    det1.MipIR(n_buckets);
+                    det1.sum->Print();
+                    values[i]=det1.sum->GetSum();
+                    cout << i << values[i];
+        
+                    myfile << std::setw(1) << (i + 1) << "  " << values[i];
+        
+                    sumval[0]=(0-(values[0]+values[1]+values[2]+values[3]+values[4]+values[5]+values[6]+values[7]));
             }   
         }
-        
-        TCanvas Mipplot;
-        gStyle->SetOptStat(0);
-        
-        det1.ShowMipIR(n_buckets);
-        
-        string dsname = directory + "event2.ps";
-        Mipplot.SaveAs(dsname.c_str());
-        
-        
-        
-        //Fill the array with values from MipIR
-        det1.MipIR(n_buckets);
-        det1.sum->Print();
-        values[i]=det1.sum->GetSum();
-        cout << i << values[i];
-        
-        myfile << std::setw(1) << (i + 1) << "  " << values[i];
-        
-        sumval[0]=(0-(values[0]+values[1]+values[2]+values[3]+values[4]+values[5]+values[6]+values[7]));
         
     } //close electrode loop
     
