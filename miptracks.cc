@@ -56,7 +56,7 @@ int miptracks()
         
                     det1.ShowMipIR(n_buckets);
         
-                    string dsname = directory + "event2.ps";
+                    string dsname = directory + "event2.ps" + a.str() + "_" + b.str();
                     Mipplot.SaveAs(dsname.c_str());
         
         
@@ -67,7 +67,7 @@ int miptracks()
                     values[i]=det1.sum->GetSum();
                     cout << i << values[i];
         
-                    myfile << std::setw(1) << (i + 1) << "  " << values[i];
+                    myfile std::setw(5) << a << "  " << std::setw(2) << theta << "  " << std::setw(1) << (i + 1) << "  " << values[i] << "  ";
         
                     sumval[0]=(0-(values[0]+values[1]+values[2]+values[3]+values[4]+values[5]+values[6]+values[7]));
             }   
