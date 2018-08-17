@@ -41,7 +41,7 @@ int miptracks()
         {
             for(int theta = 0; theta < 90; theta += 5)
             {
-                b = 2500 * (tan(e*M_PI/180)) + a;
+                b = 2500 * (tan(theta*M_PI/180)) + a;
                 Exits.push_back(b);
                 Angles.push_back(theta);
             }
