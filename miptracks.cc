@@ -46,7 +46,13 @@ int miptracks()
                 Angles.push_back(theta);
             }
             
+            
             int VectorSize = static_cast<int>(Exits.size());
+            
+            for(int counter = 0; counter < VectorSize; counter++)
+            {
+                cout << Exits[z] << " ";
+            }
             
             for(int c = 0; c < VectorSize; c++)
             {
