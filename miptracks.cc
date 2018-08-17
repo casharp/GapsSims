@@ -35,12 +35,15 @@ int miptracks()
         std::vector<int> Exits; //create integer vector of exit values to be filled in following for loop
         float b;
         
+        std::vector<int> Angles; //create integer vecotr of angle values to be filled in following for loop
+        
         for(int a = 0; a <= 25000; a += 5000)
         {
             for(int theta = 0; theta < 90; theta += 5)
             {
-                b = 2500 * (tan(theta*M_PI/180)) + a;
+                b = 2500 * (tan(e*M_PI/180)) + a;
                 Exits.push_back(b);
+                Angles.push_back(theta);
             }
             
             int VectorSize = static_cast<int>(Exits.size());
@@ -60,10 +63,10 @@ int miptracks()
                     stringstream m;
                     m << a;
                     stringstream n;
-                    n << b;
+                    n << Angles[c];
                         
                     string dsname = directory + "event2_x" + m.str();
-                    dsname += "_y" + n.str();
+                    dsname += "_theta" + n.str();
                     dsname += ".ps";
                     Mipplot.SaveAs(dsname.c_str());
         
@@ -75,7 +78,7 @@ int miptracks()
                     values[i]=det1.sum->GetSum();
                     cout << i << values[i];
         
-                    myfile std::setw(5) << a << "  " << std::setw(2) << theta << "  " << std::setw(1) << (i + 1) << "  " << values[i] << "  ";
+                    myfile << std::setw(5) << a << "  " << std::setw(2) << Angles[c] << "  " << std::setw(1) << (i + 1) << "  " << values[i] << "  ";
         
                     sumval[0]=(0-(values[0]+values[1]+values[2]+values[3]+values[4]+values[5]+values[6]+values[7]));
             }   
