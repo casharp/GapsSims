@@ -33,12 +33,13 @@ int miptracks()
         
         
         std::vector<int> Exits; //create integer vector of exit values to be filled in following for loop
+        float b;
         
         for(int a = 0; a <= 25000; a += 5000)
         {
             for(int theta = 0; theta < 90; theta += 5)
             {
-                float b = 2500 * (tan(theta*M_PI/180)) + a;
+                b = 2500 * (tan(theta*M_PI/180)) + a;
                 Exits.push_back(b);
             }
             
@@ -56,7 +57,14 @@ int miptracks()
         
                     det1.ShowMipIR(n_buckets);
         
-                    string dsname = directory + "event2.ps" + a.str() + "_" + b.str();
+                    stringstream m;
+                    m << a;
+                    stringstream n;
+                    n << b;
+                        
+                    string dsname = directory + "event2_x" + m.str();
+                    dsname += "_y" + n.str();
+                    dsname += ".ps";
                     Mipplot.SaveAs(dsname.c_str());
         
         
