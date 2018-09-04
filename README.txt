@@ -15,6 +15,13 @@ Main:
 main.cc - Runs all functions, include header files here
 	- There is a problem with running MIP's and plotting fields using the modules written below so there is an example of running and plotting an MIP in main right now.
 
+Variations on "Main":
+------------------------
+loop.cc - This is the loop used to create the lookup table. The code will loop over a range of x (width) and y (depth) positions, to create single x-ray events. The total charge collected as a result of this event is gathered by the innermost loop over all 8 electrodes, and displayed as a histogram.
+
+miptracks.cc - This models a MIP particle passing through the detector (entrance and exit points are not the same). Code can be used to show charge collection as a function of the angle of incidence.
+
+
 Header Files:
 -------------------------
 gaps_detector.h - this defines the gaps class, and its member functions
